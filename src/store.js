@@ -1,8 +1,8 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import {spotifyReducer} from './reducers';
+import {characterReducer} from './reducers';
 
 export default createStore(
-    spotifyReducer,
+    characterReducer,
     applyMiddleware(thunk)
 );

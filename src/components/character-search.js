@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Spinner from 'react-spinkit';
-import {searchArtists} from '../actions';
+import {searchCharacters} from '../actions';
 
-export class ArtistSearch extends React.Component {
+export class CharacterSearch extends React.Component {
     renderResults() {
         if (this.props.loading) {
             return <Spinner spinnerName="circle" noFadeIn />;
@@ -13,14 +13,14 @@ export class ArtistSearch extends React.Component {
             return <strong>{this.props.error}</strong>;
         }
 
-        const artists = this.props.artists.map((artist, index) =>
-            <li key={index}>{artist}</li>
+        const characters = this.props.characters.map((character, index) =>
+            <li key={index}>{character}</li>
         );
 
 
         return (
-            <ul className="artist-search-results">
-                {artists}
+            <ul className="character-search-results">
+                {characters}
             </ul>
         );
     }
@@ -31,17 +31,17 @@ export class ArtistSearch extends React.Component {
             return;
         }
 
-        this.props.dispatch(searchArtists(this.input.value));
+        this.props.dispatch(searchCharacters(this.input.value));
     }
 
     render() {
         return (
-            <div className="artist-search">
+            <div className="character-search">
                 <form onSubmit={(e) => this.search(e)}>
                     <input type="search" ref={input => this.input = input} />
                     <button>Search</button>
                 </form>
-                <ul className="artist-search-results">
+                <ul className="character-search-results">
                     {this.renderResults()}
                 </ul>
             </div>
@@ -50,9 +50,9 @@ export class ArtistSearch extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    artists: state.artists,
+    characters: state.characters,
     loading: state.loading,
     error: state.error
 });
 
-export default connect(mapStateToProps)(ArtistSearch);
+export default connect(mapStateToProps)(CharacterSearch);

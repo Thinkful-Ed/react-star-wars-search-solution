@@ -1,26 +1,26 @@
-import {search} from './spotify';
+import {search} from './star-wars';
 
-export const SEARCH_ARTISTS_REQUEST = 'SEARCH_ARTISTS_REQUEST';
-export const searchArtistsRequest = () => ({
-    type: SEARCH_ARTISTS_REQUEST
+export const SEARCH_CHARACTERS_REQUEST = 'SEARCH_CHARACTERS_REQUEST';
+export const searchCharactersRequest = () => ({
+    type: SEARCH_CHARACTERS_REQUEST
 });
 
-export const SEARCH_ARTISTS_SUCCESS = 'SEARCH_ARTISTS_SUCCESS';
-export const searchArtistsSuccess = artists => ({
-    type: SEARCH_ARTISTS_SUCCESS,
-    artists
+export const SEARCH_CHARACTERS_SUCCESS = 'SEARCH_CHARACTERS_SUCCESS';
+export const searchCharactersSuccess = characters => ({
+    type: SEARCH_CHARACTERS_SUCCESS,
+    characters
 });
 
-export const SEARCH_ARTISTS_ERROR = 'SEARCH_ARTISTS_ERROR';
-export const searchArtistsError = error => ({
-    type: SEARCH_ARTISTS_ERROR,
+export const SEARCH_CHARACTERS_ERROR = 'SEARCH_CHARACTERS_ERROR';
+export const searchCharactersError = error => ({
+    type: SEARCH_CHARACTERS_ERROR,
     error
 });
 
-export const searchArtists = artist => dispatch => {
-    dispatch(searchArtistsRequest());
-    search(artist)
-        .then(artists => dispatch(searchArtistsSuccess(artists)))
-        .catch(error => dispatch(searchArtistsError(error)));
+export const searchCharacters = name => dispatch => {
+    dispatch(searchCharactersRequest());
+    search(name)
+        .then(characters => dispatch(searchCharactersSuccess(characters)))
+        .catch(error => dispatch(searchCharactersError(error)));
 };
 

@@ -1,30 +1,30 @@
 import {
-    SEARCH_ARTISTS_REQUEST,
-    SEARCH_ARTISTS_SUCCESS,
-    SEARCH_ARTISTS_ERROR
+    SEARCH_CHARACTERS_REQUEST,
+    SEARCH_CHARACTERS_SUCCESS,
+    SEARCH_CHARACTERS_ERROR
 } from './actions';
 
 const initialState = {
-    artists: [],
+    characters: [],
     loading: false,
     error: null
 };
 
-export function spotifyReducer(state=initialState, action) {
-    if (action.type === SEARCH_ARTISTS_REQUEST) {
+export function characterReducer(state=initialState, action) {
+    if (action.type === SEARCH_CHARACTERS_REQUEST) {
         return Object.assign({}, state, {
             loading: true,
             error: null
         });
     }
-    else if (action.type === SEARCH_ARTISTS_SUCCESS) {
+    else if (action.type === SEARCH_CHARACTERS_SUCCESS) {
         return Object.assign({}, state, {
-            artists: action.artists,
+            characters: action.characters,
             loading: false,
             error: null
         });
     }
-    else if (action.type === SEARCH_ARTISTS_ERROR) {
+    else if (action.type === SEARCH_CHARACTERS_ERROR) {
         return Object.assign({}, state, {
             error: action.error,
             loading: false
